@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Edit Show</title>
+</head>
+<style>
+    .button {
+        display: block;
+        width: 115px;
+        height: 45px;
+        background: gold;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: larger;
+        text-decoration: none;
+    }
+
+    .btn {
+        font-size: larger;
+        font-weight: bold;
+        text-decoration: none;
+        background: gold;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar">
+                <h1 class="me-auto">Edit Show</h1>
+                <a class="button nav-item nav-link mx-3" href="/dashboard">Dash</a>
+                <a class="button nav-item nav-link mx-3" href="/logout">Logout</a>
+            </nav>
+        <div class="col-4">
+            <form action="/shows/update/{{ show.id }}" method="post">
+                <label for="title">Title:</label>
+                <input id="title" name="title" class="form-control" value="{{ show.title }}">
+                    {% for error in get_flashed_messages(category_filter = ['title']) %}
+                        <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                <br>
+                <label for="network">Network:</label>
+                <input id="network" name="network" class="form-control" value="{{ show.network }}">
+                    {% for error in get_flashed_messages(category_filter = ['network']) %}
+                        <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                <br>
+                <label for="date">Release Date:</label>
+                <input type="date" name="date" class="form-control" value="{{ show.date }}">
+                    {% for error in get_flashed_messages(category_filter = ['date']) %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                <br>
+                <label for="description">Description:</label>
+                <input id="text" name="description" class="form-control" value="{{ show.description }}">
+                    {% for error in get_flashed_messages(category_filter = ['description']) %}
+                        <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                <br>
+                <input type="submit" value="Update" class="btn btn-warning">
+            </form>
+        </div>
+</body>
+</html>

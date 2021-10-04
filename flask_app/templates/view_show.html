@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>View Show</title>
+</head>
+<style>
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .row {
+        font-family: Comic Sans MS;
+    }
+
+    .box-1 {
+        justify-content: center;
+        margin: 0px 0px 0px 0px;
+        margin-top: 20px;
+        margin-left: 200px;
+        height: 500px;
+        width: 1000px;
+        border-style: solid;
+        border-color: black;
+        border-width: 4px;
+    }
+
+    h1 {
+        flex: none;
+        /* justify-content: left; */
+    }
+
+    .button {
+        display: block;
+        width: 115px;
+        height: 45px;
+        background: gold;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: larger;
+        text-decoration: none;
+    }
+
+    .btn {
+        font-size: larger;
+        font-weight: bold;
+        text-decoration: none;
+        background: gold;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="row-1">
+            <nav class="navbar justify-content-end">
+                <a class="button nav-item nav-link mx-3" href="/dashboard">Dash</a>
+                <a class="button nav-item nav-link mx-3" href="/logout">Logout</a>
+            </nav>
+            <div class="row">
+                <div class="col-xs-1 box-1">
+                    <h1>{{ show.title }}</h1>
+                    <div>
+                        <br>
+                        <p class="">Network: {{ show.network }}</p>
+                        <p class="">Release Date: {{ show.date.strftime('%B %d, %Y') }}</p>
+                        <p class="">Description: {{ show.description }}</p>
+                        <br>
+                        <h3>Posted By: {{ show['first_name'] }} {{ show['last_name'] }} </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

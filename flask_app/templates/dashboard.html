@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<style>
+    .button {
+        display: block;
+        width: 115px;
+        height: 45px;
+        background: gold;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: larger;
+        text-decoration: none;
+    }
+
+    .button-2 {
+        justify-content: end;
+        display: block;
+        width: 115px;
+        height: 45px;
+        background: gold;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 25px;
+        text-decoration: none;
+    }
+
+    th {
+        color: gold;
+    }
+
+    .link-style {
+        text-decoration: none;
+        color: cyan;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h1 class="me-auto">Hello {{ logged_user.first_name }}!</h1>
+            <a href="/logout" class="button">Logout</a>
+        </nav>
+    <div>
+        <h2>All TV Shows</h2>
+            <br>
+            <table class="table table-hover table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Network</th>
+                        <th>Release Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tbody>
+                        {% for show in shows %}
+                        <tr>
+                            <td>{{ show.title }}</td>
+                            <td>{{ show.network }}</td>
+                            <td>{{ show.date.strftime('%B %d, %Y') }}</td>
+                            <td><a class="link-style" href="/shows/{{show.id}}">show </a> | <a class="link-style" href="/shows/edit/{{show.id}}">edit </a> | <a class="link-style" href="/shows/delete/{{ show.id }}">delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+            <br>
+            <a href="/shows/new" class="button-2">Add Show</a>
+    </div>
+    
+</body>
+</html>
